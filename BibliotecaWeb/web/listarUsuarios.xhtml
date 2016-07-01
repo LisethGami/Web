@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Biblioteca</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+
+        <ui:insert>
+            <ui:include src="template/cabecera.xhtml" />
+        </ui:insert>
+        
+        <ui:insert>
+            <ui:include src="template/menuBibliotecario.xhtml" />
+        </ui:insert>
+
+        <!-- INICIO -->
+        <br>
+            <h:form prependId="false">
+                <h:dataTable var="fila" value="#{controller.listaUsuarios}">
+
+                    <h:column>
+                        <f:facet name="header">Codigo</f:facet>
+                            #{fila.codUsuario}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Nombre</f:facet>
+                            #{fila.nombre.toUpperCase()}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Apellido</f:facet>
+                            #{fila.apellido.toUpperCase()}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Tipo de Usuario</f:facet>
+                            #{fila.TIPOUSUARIOidTipoUsuario.nombreTUsuario}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Correo</f:facet>
+                            #{fila.correo}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Clave</f:facet>
+                            #{fila.clave}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Operaciones</f:facet>
+                        <h:commandLink value="Editar" 
+                                       action="#{controller.editarUsuario(fila.codUsuario)}"/> | 
+                        <h:commandLink value="Eliminar" 
+                                       action="#{controller.eliminarUsuario(fila.codUsuario)}"/>
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+        </br>
+        <!--   FIN  -->
+
+    </h:body>
+</html>
+

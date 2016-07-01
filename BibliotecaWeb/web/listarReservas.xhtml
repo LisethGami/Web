@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Biblioteca</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+
+        <ui:insert>
+            <ui:include src="template/cabecera.xhtml" />
+        </ui:insert>
+        
+        <ui:insert>
+            <ui:include src="template/menuBibliotecario.xhtml" />
+        </ui:insert>
+
+        <!-- INICIO -->
+        <br>
+            <h:form prependId="false">
+                <h:dataTable var="fila" value="#{controller.listaReservas}">
+
+                    <h:column>
+                        <f:facet name="header">Codigo</f:facet>
+                            #{fila.idReserva}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Fecha de Inicio</f:facet>
+                            #{fila.fechaIni}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Libro</f:facet>
+                            #{fila.LIBROidLibro.nombreLibro}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Usuario</f:facet>
+                            #{fila.USUARIOcodUsuario.nombre}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Fecha de Fin</f:facet>
+                            #{fila.fechaFin}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Entregado por Alumno</f:facet>
+                            #{fila.flgEntregadoPorAlumno}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Recibido por Alumno</f:facet>
+                            #{fila.flgRecibidoPorAlumno}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Observacion</f:facet>
+                            #{fila.observacion}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Operaciones</f:facet>
+                        <h:commandLink value="Editar" 
+                                       action="#{controller.editarReserva(fila.idReserva)}"/> | 
+                        <h:commandLink value="Eliminar" 
+                                       action="#{controller.eliminarReserva(fila.idReserva)}"/>
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+        </br>
+        <!--   FIN  -->
+
+    </h:body>
+</html>
+

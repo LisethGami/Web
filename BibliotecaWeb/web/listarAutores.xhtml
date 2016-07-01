@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Biblioteca</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+       
+        <ui:insert>
+            <ui:include src="template/cabecera.xhtml" />
+        </ui:insert>
+        <ui:insert>
+            <ui:include src="template/menuBibliotecario.xhtml" />
+        </ui:insert>
+        
+        <!--  INICIO  -->
+        <br>
+            <h:form prependId="false">
+                <h:dataTable var="fila" value="#{controller.listaAutores}">
+                    <h:column>
+                        <f:facet name="header">Codigo</f:facet>
+                        #{fila.idAutor}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Nombre</f:facet>
+                        #{fila.nombre}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Apellido</f:facet>
+                        #{fila.apellido}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Operaciones</f:facet>
+                        <h:commandLink value="Editar" 
+                                       action="#{controller.editarAutor(fila.idAutor)}"/> | 
+                        <h:commandLink value="Eliminar" 
+                                       action="#{controller.eliminarAutor(fila.idAutor)}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </br>       
+        <!--    FIN   -->
+        
+    </h:body>
+</html>
+

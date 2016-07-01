@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Biblioteca</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+
+        <ui:insert>
+            <ui:include src="template/cabecera.xhtml" />
+        </ui:insert>
+        
+        <ui:insert>
+            <ui:include src="template/menuBibliotecario.xhtml" />
+        </ui:insert>
+
+        <!-- INICIO -->
+        <br>
+            <h:form prependId="false">
+                <h:dataTable var="fila" value="#{controller.listLibros}">
+
+                    <h:column>
+                        <f:facet name="header">Codigo</f:facet>
+                            #{fila.idLibro}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Nombre</f:facet>
+                            #{fila.nombreLibro}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Autor</f:facet>
+                        #{fila.AUTORidAutor.nombre}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Fecha de publicacion</f:facet>
+                            #{fila.fechaPublicacion}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Volumen</f:facet>
+                            #{fila.volumen}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Categoria</f:facet>
+                            #{fila.CATEGORIAidCategoria.nombreCategoria}
+                    </h:colum>
+                    
+                    <h:column>
+                        <f:facet name="header">Cantidad</f:facet>
+                            #{fila.nroEjemplares}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Editorial</f:facet>
+                            #{fila.EDITORIALidEditorial.nombreEditorial}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Operaciones</f:facet>
+                        <h:commandLink value="Editar" 
+                                       action="#{controller.editarLibro(fila.idLibro)}"/> | 
+                        <h:commandLink value="Eliminar" 
+                                       action="#{controller.eliminarLibro(fila.idLibro)}"/>
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+        </br>
+        <!--   FIN  -->
+
+    </h:body>
+</html>
+
+
+<!--
+    idLibro
+    nombreLibro
+    fechaPublicacion
+    volumen
+    txtImgLibro
+    nroEjemplares
+    ----------------
+    idAutor
+    idCategoria
+    idEditorial
+-->
+

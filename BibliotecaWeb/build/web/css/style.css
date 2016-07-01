@@ -1,0 +1,31 @@
+body{
+    background-image: url("Fondo.png");
+}
+
+body, table{
+    font-family: Margot, Burtons Nightmare, Arial
+}
+
+a{
+    text-decoration: none;
+}
+
+a:link, a:visited{
+    color: darkmagenta
+}
+
+a:hover{
+    color: brown
+}
+
+.titulo{
+    background-color: coral;
+    text-align: center;
+    color: #ffffda;
+    font-weight: Margot;
+    font-weight: bold;
+}
+
+th{
+    background-color: lightseagreen;
+}
